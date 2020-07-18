@@ -72,13 +72,13 @@ void tampil (void)
     glVertex3f(-10.0,10.0,-10.0);
     glEnd();
     //atas
-    glBegin(GL_QUADS);
-    glColor3f(0,0.5,1);
-    glVertex3f(-10.0,10.0+10.0,10.0);
-    glVertex3f(10.0,-10.0+20.0,10.0);
-    glVertex3f(10.0,-10.0+20.0,-10.0);
-    glVertex3f(-10.0,10.0+10.0,-10.0);
-    glEnd();
+//    glBegin(GL_QUADS);
+//    glColor3f(0,0.5,1);
+//    glVertex3f(-10.0,10.0+10.0,10.0);
+//    glVertex3f(10.0,-10.0+20.0,10.0);
+//    glVertex3f(10.0,-10.0+20.0,-10.0);
+//    glVertex3f(-10.0,10.0+10.0,-10.0);
+//    glEnd();
     //bawah
     glBegin(GL_QUADS);
     glColor3f(0,1.5,0);
