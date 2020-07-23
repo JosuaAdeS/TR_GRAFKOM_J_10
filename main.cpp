@@ -151,8 +151,32 @@ void bangunan(void)
     glVertex3f(28,30.0,-44.0);
     glEnd();
 
-}
+    glBegin(GL_QUADS);
+    glColor3f(0.4,0.4,0.4);
+    glVertex3f(18,30.0,-47);
+    glVertex3f(28.0,30.0,-44.0);
+    glVertex3f(32.0,30.0,-56.5);
+    glVertex3f(0.0,30.0,-65.0);
 
+    glVertex3f(0.0,30.0,-65.0);
+    glVertex3f(-10.0,30.0,-25.0);
+    glVertex3f(14,30.0,-34.0);
+    glVertex3f(18,30.0,-47);
+
+    glVertex3f(-10.0,30.0,-25.0);
+    glVertex3f(50.0,30.0,-10.0);
+    glVertex3f(35,30.0,-29.0);
+    glVertex3f(14,30.0,-34.0);
+
+    glVertex3f(50.0,30.0,-10.0);
+    glVertex3f(35,30.0,-29.0);
+    glVertex3f(42.5,30.0,-54.0);
+    glVertex3f(60.0,30.0,-50.0);
+    glEnd();
+
+
+
+}
 void tampil (void)
 {
     if(is_depth)
