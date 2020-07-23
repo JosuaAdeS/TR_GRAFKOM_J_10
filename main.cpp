@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(1350,700);
+    glutInitWindowSize(1000,800);
     glutInitWindowPosition(0,0);
     glutCreateWindow("Josua Ade Saputra - 672018272");
     init();
@@ -54,62 +54,103 @@ void bangunan(void)
     //belakang
     glBegin(GL_QUADS);
     glColor3f(1,1,0);
-    glVertex3f(-60.0,-30.0,-100.0);
-    glVertex3f(-60.0,50.0,-100.0);
-    glVertex3f(30.0,50.0,-100.0);
-    glVertex3f(30.0,-30.0,-100.0);
+    glVertex3f(-60.0,-30.0,-50.0);
+    glVertex3f(-60.0,30.0,-50.0);
+    glVertex3f(0.0,30.0,-65.0);
+    glVertex3f(0.0,-30.0,-65.0);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(1,0,0);
+    glVertex3f(60.0,-30.0,-50.0);
+    glVertex3f(60.0,30.0,-50.0);
+    glVertex3f(0.0,30.0,-65.0);
+    glVertex3f(0.0,-30.0,-65.0);
+    glEnd();
+    //kanan
+    glBegin(GL_QUADS);
+    glColor3f(1,0,1);
+    glVertex3f(-60.0,-30.0,-50.0);
+    glVertex3f(-60.0,30.0,-50.0);
+    glVertex3f(-60.0,30.0,50.0);
+    glVertex3f(-60.0,-30.0,50.0);
     glEnd();
 
     //depan
     glBegin(GL_QUADS);
-    glColor3f(1,0,0);
-    glVertex3f(-60.0,-30.0,55.0);
-    glVertex3f(-60.0,50.0,55.0);
-    glVertex3f(0.0,50.0,70.0);
-    glVertex3f(0.0,-30.0,70.0);
-    glEnd();
-
-    glBegin(GL_QUADS);
-    glColor3f(1,0,1);
-    glVertex3f(0.0,-30.0,70.0);
-    glVertex3f(0.0,50.0,70.0);
-    glVertex3f(30.0,50.0,55.0);
-    glVertex3f(30.0,-30.0,55.0);
-    glEnd();
-
-    //kanan
-    glBegin(GL_QUADS);
     glColor3f(0.9765,0.9176,0.7647);
-    glVertex3f(30.0,50.0,55.0);
-    glVertex3f(30.0,-30.0,55.0);
-    glVertex3f(55.0,-30.0,-22.0);
-    glVertex3f(55.0,50.0,-22.0);
+    glVertex3f(-60.0,30.0,50.0);
+    glVertex3f(-60.0,-30.0,50.0);
+    glVertex3f(20.0,-30.0,50.0);
+    glVertex3f(20.0,30.0,50.0);
     glEnd();
-
+    //depan kiri
     glBegin(GL_QUADS);
     glColor3f(0.5,1,0.5);
-    glVertex3f(55.0,50.0,-22.0);
-    glVertex3f(55.0,-30.0,-22.0);
-    glVertex3f(30.0,-30.0,-100.0);
-    glVertex3f(30.0,50.0,-100.0);
+    glVertex3f(20.0,-30.0,50.0);
+    glVertex3f(20.0,30.0,50.0);
+    glVertex3f(50.0,30.0,-10.0);
+    glVertex3f(50.0,-30.0,-10.0);
     glEnd();
 
     //kiri
     glBegin(GL_QUADS);
     glColor3f(0.9765,0.9176,0.7647);
-    glVertex3f(-60.0,50.0,55.0);
-    glVertex3f(-60.0,-30.0,55.0);
-    glVertex3f(-70.0,-30.0,-22.0);
-    glVertex3f(-70.0,50.0,-22.0);
+    glVertex3f(50.0,30.0,-10.0);
+    glVertex3f(50.0,-30.0,-10.0);
+    glVertex3f(60.0,-30.0,-50.0);
+    glVertex3f(60.0,30.0,-50.0);
+    glEnd();
+    //dalam belakang kiri
+    glBegin(GL_QUADS);
+    glColor3f(0,0,1);
+    glVertex3f(50.0,30.0,-10.0);
+    glVertex3f(50.0,-30.0,-10.0);
+    glVertex3f(-10.0,-30.0,-25.0);
+    glVertex3f(-10.0,30.0,-25.0);
+
+    glVertex3f(-10.0,-30.0,-25.0);
+    glVertex3f(-10.0,30.0,-25.0);
+    glVertex3f(0.0,30.0,-65.0);
+    glVertex3f(0.0,-30.0,-65.0);
+
+    glVertex3f(50.0,30.0,-10.0);
+    glVertex3f(50.0,-30.0,-10.0);
+    glVertex3f(-10.0,-30.0,-25.0);
+    glVertex3f(-10.0,30.0,-25.0);
+
+    glVertex3f(35,-30.0,-29.0);
+    glVertex3f(35,30.0,-29.0);
+    glVertex3f(42.5,30.0,-54.0);
+    glVertex3f(42.5,-30.0,-54.0);
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(0.5,0.5,1);
-    glVertex3f(-70.0,50.0,-22.0);
-    glVertex3f(-70.0,-30.0,-22.0);
-    glVertex3f(-60.0,-30.0,-100.0);
-    glVertex3f(-60.0,50.0,-100.0);
+    glColor3f(1,0,1);
+    glVertex3f(28,-30.0,-44.0);
+    glVertex3f(28,30.0,-44.0);
+    glVertex3f(32,30.0,-56.5);
+    glVertex3f(32,-30.0,-56.5);
+
+    glVertex3f(14,-30.0,-34.0);
+    glVertex3f(14,30.0,-34.0);
+    glVertex3f(18,30.0,-47);
+    glVertex3f(18,-30.0,-47);
     glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0,1,1);
+    glVertex3f(35,-30.0,-29.0);
+    glVertex3f(35,30.0,-29.0);
+    glVertex3f(14,30.0,-34.0);
+    glVertex3f(14,-30.0,-34.0);
+
+    glVertex3f(18,30.0,-47);
+    glVertex3f(18,-30.0,-47);
+    glVertex3f(28,-30.0,-44.0);
+    glVertex3f(28,30.0,-44.0);
+    glEnd();
+
 }
 
 void tampil (void)
@@ -194,7 +235,7 @@ void ukuran (int lebar, int tinggi)
     if (tinggi == 0) tinggi=1;
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(80.0,lebar/tinggi,5.0,500.0);
-    glTranslatef(0.0,-5.0,-150.0);
+    gluPerspective(70.0,lebar/tinggi,5.0,500.0);
+    glTranslatef(5.0,-5.0,-150.0);
     glMatrixMode(GL_MODELVIEW);
 }
