@@ -5,6 +5,7 @@ void init(void);
 void tampil(void);
 void keyboard(unsigned char, int, int);
 void ukuran(int, int);
+void specialKeyboard(int key, int x, int y);
 void mouse(int button, int state, int x, int y);
 void mouseMotion(int x,int y);
 
@@ -33,6 +34,7 @@ int main(int argc, char **argv)
     init();
     glutDisplayFunc(tampil);
     glutKeyboardFunc(keyboard);
+	glutSpecialFunc(specialKeyboard);
     glutMouseFunc(mouse);
 	glutMotionFunc(mouseMotion);
     glutReshapeFunc(ukuran);
@@ -72,18 +74,19 @@ void bangunan(void)
     glColor3f(1,0,1);
     glVertex3f(-60.0,-30.0,-50.0);
     glVertex3f(-60.0,30.0,-50.0);
-    glVertex3f(-60.0,30.0,50.0);
-    glVertex3f(-60.0,-30.0,50.0);
+    glVertex3f(-90.0,30.0,50.0);
+    glVertex3f(-90.0,-30.0,50.0);
     glEnd();
 
     //depan
     glBegin(GL_QUADS);
     glColor3f(0.9765,0.9176,0.7647);
-    glVertex3f(-60.0,30.0,50.0);
-    glVertex3f(-60.0,-30.0,50.0);
+    glVertex3f(-90.0,30.0,50.0);
+    glVertex3f(-90.0,-30.0,50.0);
     glVertex3f(20.0,-30.0,50.0);
     glVertex3f(20.0,30.0,50.0);
     glEnd();
+
     //depan kiri
     glBegin(GL_QUADS);
     glColor3f(0.5,1,0.5);
@@ -101,6 +104,7 @@ void bangunan(void)
     glVertex3f(60.0,-30.0,-50.0);
     glVertex3f(60.0,30.0,-50.0);
     glEnd();
+
     //dalam belakang kiri
     glBegin(GL_QUADS);
     glColor3f(0,0,1);
@@ -174,7 +178,37 @@ void bangunan(void)
     glVertex3f(60.0,30.0,-50.0);
     glEnd();
 
+    //depan kiri
+    glBegin(GL_QUADS);
+    glColor3f(0,1,1);
+    glVertex3f(20.0,-30.0,50.0);
+    glVertex3f(20.0,30.0,50.0);
+    glVertex3f(20,30.0,10.0);
+    glVertex3f(20,-30.0,10.0);
 
+    glVertex3f(-35,30.0,50);
+    glVertex3f(-35,-30.0,50);
+    glVertex3f(-35,-30.0,30.0);
+    glVertex3f(-35,30.0,30.0);
+
+    glVertex3f(-5.0,-30.0,10.0);
+    glVertex3f(-5.0,30.0,10.0);
+    glVertex3f(-5,30.0,30.0);
+    glVertex3f(-5,-30.0,30.0);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0,0,1);
+    glVertex3f(20,30.0,10.0);
+    glVertex3f(20,-30.0,10.0);
+    glVertex3f(-5.0,-30.0,10.0);
+    glVertex3f(-5.0,30.0,10.0);
+
+    glVertex3f(-35,-30.0,30.0);
+    glVertex3f(-35,30.0,30.0);
+    glVertex3f(-5,30.0,30.0);
+    glVertex3f(-5,-30.0,30.0);
+    glEnd();
 
 }
 void tampil (void)
@@ -234,6 +268,26 @@ void keyboard(unsigned char key,int x,int y)
 	}
     tampil();
 }
+void specialKeyboard(int key, int x, int y)
+{
+
+	switch (key) {
+	case 100:
+		xmovement -= 0.5f;
+		break;
+	case 101:
+		ymovement += 0.5f;
+		break;
+	case 102:
+		xmovement += 0.5f;
+		break;
+	case 103:
+		ymovement -= 0.5f;
+		break;
+	}
+	glutPostRedisplay();
+}
+
 void mouse(int button, int state, int x, int y)
 {
     if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
