@@ -5,6 +5,21 @@ void init(void);
 void tampil(void);
 void keyboard(unsigned char, int, int);
 void ukuran(int, int);
+void mouse(int button, int state, int x, int y);
+void mouseMotion(int x,int y);
+
+bool mouseDown = false;
+
+float xrot = 0.0f;
+float yrot = 0.0f;
+
+float xdiff = 0.0f;
+float ydiff = 0.0f;
+
+float scale = 1.0f;
+float xmovement = 0.0f;
+float ymovement = 0.0f;
+float zmovement = 0.0f;
 
 int is_depth;
 
@@ -18,6 +33,8 @@ int main(int argc, char **argv)
     init();
     glutDisplayFunc(tampil);
     glutKeyboardFunc(keyboard);
+    glutMouseFunc(mouse);
+	glutMotionFunc(mouseMotion);
     glutReshapeFunc(ukuran);
     glutMainLoop();
     return 0;
@@ -102,6 +119,12 @@ void tampil (void)
     else
         glClear(GL_COLOR_BUFFER_BIT);
 
+    glLoadIdentity();
+    glRotatef(xrot, 1.0f, 0.0f, 0.0f); // Rotating horizontal
+	glRotatef(yrot, 0.0f, 1.0f, 0.0f); // Rotating vertical
+	glScalef(scale, scale, scale); // Scalling
+	glTranslatef(xmovement, ymovement, zmovement); // Translate / Movement
+
     bangunan();
 
     glPushMatrix();
@@ -110,49 +133,26 @@ void tampil (void)
 }
 void keyboard(unsigned char key,int x,int y)
 {
-    switch (key)
-    {
-        case 'w' :
-        case 'W' :
-            glTranslatef(0,0,3);
-            break;
-        case 'd' :
-        case 'D' :
-            glTranslatef(3,0,0);
-            break;
-        case 's' :
-        case 'S' :
-            glTranslatef(0,0,-3);
-            break;
-        case 'a' :
-        case 'A' :
-            glTranslatef(-3,0,0);
-            break;
-        case '7' :
-            glTranslatef(0,3,0);
-            break;
-        case '9' :
-            glTranslatef(0,-3,0);
-            break;
-        case '2' :
-            glRotatef(2,1,0,0);
-            break;
-        case '8' :
-            glRotatef(-2,0,1,0);
-            break;
-        case '6' :
-            glRotatef(2,0,1,0);
-            break;
-        case '4' :
-            glRotatef(-2,1,0,0);
-            break;
-        case '1' :
-            glRotatef(2,0,0,1);
-            break;
-        case '3' :
-            glRotatef(-2,0,0,1);
-            break;
-        case '5' :
+    switch (key){
+	case 'a':
+		yrot += 1.0f;
+		break;
+	case 'd':
+		yrot -= 1.0f;
+		break;
+	case 'w':
+		xrot += 1.0f;
+		break;
+	case 's':
+		xrot -= 1.0f;
+		break;
+	case '1':
+		scale += 0.2f;
+		break;
+	case '2':
+		scale -= 0.2f;
+		break;
+    case '5' :
             if(is_depth)
             {
                 is_depth =0;
@@ -162,18 +162,39 @@ void keyboard(unsigned char key,int x,int y)
             {
                 is_depth =1;
                 glEnable(GL_DEPTH_TEST);
-            }
-    }
+            }break;
+	case 27:
+		exit(1);
+		break;
+	}
     tampil();
 }
-
+void mouse(int button, int state, int x, int y)
+{
+    if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+    {
+        mouseDown = true;
+        xdiff = x-yrot;
+        ydiff = -y+xrot;
+    }
+    else
+        mouseDown = false;
+}
+void mouseMotion(int x,int y)
+{
+    if(mouseDown)
+    {
+        yrot = x-xdiff;
+        xrot = y+ydiff;
+        glutPostRedisplay();
+    }
+}
 void ukuran (int lebar, int tinggi)
 {
     if (tinggi == 0) tinggi=1;
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(50.0,lebar/tinggi,5.0,500.0);
+    gluPerspective(80.0,lebar/tinggi,5.0,500.0);
     glTranslatef(0.0,-5.0,-150.0);
     glMatrixMode(GL_MODELVIEW);
 }
-
