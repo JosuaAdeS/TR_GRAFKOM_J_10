@@ -218,3 +218,7 @@
 	<stddef.h>
 	<GL/gl.h>
 
+1595784314 source:e:\fani bakcup\fti-ti-2018\semester 6\grafika komputer - j\code\tr\main.cpp
+	<windows.h>
+	<GL/glut.h>
+
