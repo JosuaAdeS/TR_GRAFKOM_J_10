@@ -1,5 +1,6 @@
 #include<windows.h>
 #include<GL/glut.h>
+#include<stdio.h>
 
 void init(void);
 void tampil(void);
@@ -48,20 +49,170 @@ void init(void){
     glPointSize(9.0);
     glLineWidth(4);
 }
-
-void dinding ()
+void dinding_depan()
 {
-    //dinding luar
-    //depan
-    glBegin(GL_POLYGON);
-    glColor3ub(255,0,255);
-    glVertex3f(-170,80,120);
-    glVertex3f(-20,100,120);
-    glVertex3f(170,100,120);
-    glVertex3f(170,20,120);
-    glVertex3f(70,-20,120);
-    glVertex3f(-170,-20,120);
+    glBegin(GL_LINES);
+    glColor3ub(255,255,255);
+    //horizontal
+    for (int i=0;i<7;i++){
+        glVertex3f(-170,20+(i*10),120);
+        glVertex3f(170,20+(i*10),120);
+    }
+    for (int i=0;i<5;i++){
+        glVertex3f(-170,20-(i*10),120);
+        glVertex3f(70,20-(i*10),120);
+    }
+    for (int i=0;i<3;i++){
+        glVertex3f(170,80+(i*10),120);
+        glVertex3f(-20,80+(i*10),120);
+    }
+    //vertical
+    for (int i=0;i<25;i++){
+        glVertex3f(-170+(i*10),20,120);
+        glVertex3f(-170+(i*10),-20,120);
+    }
+    for (int i=0;i<35;i++){
+        glVertex3f(-170+(i*10),80,120);
+        glVertex3f(-170+(i*10),20,120);
+    }
+    for (int i=0;i<20;i++){
+        glVertex3f(-20+(i*10),80,120);
+        glVertex3f(-20+(i*10),100,120);
+    }
     glEnd();
+    //segitiga
+    glBegin(GL_TRIANGLES);
+    glColor3ub(255,255,255);
+    for (int h=0;h<6;h++){
+        for (int i=0;i<34;i++){
+            glVertex3f(-160+(i*10),80-(h*10),120);
+            glVertex3f(-160+(i*10),70-(h*10),120);
+            glVertex3f(-170+(i*10),70-(h*10),120);
+        }
+    }
+    for (int h=0;h<4;h++){
+        for (int i=0;i<24;i++){
+            glVertex3f(-160+(i*10),20-(h*10),120);
+            glVertex3f(-160+(i*10),10-(h*10),120);
+            glVertex3f(-170+(i*10),10-(h*10),120);
+        }
+    }
+    for (int h=0;h<2;h++){
+        for (int i=0;i<19;i++){
+            glColor3ub(255,255,255);
+            glVertex3f(-10+(i*10),100-(h*10),120);
+            glVertex3f(-10+(i*10),90-(h*10),120);
+            glVertex3f(-20+(i*10),90-(h*10),120);
+        }
+    }
+
+    glEnd();
+    //perpotongan garis
+    float ax[15];
+    float ay [2] = {80,100};
+    float Mab[15],Cab[15],px[15],py[15];
+    float cx=-170, cy=80, dx=-20, dy=100,Mcd,Ccd;
+
+        for (int i=0;i<15;i++){
+            ax[i] = -170+(i*10);
+        }
+    //rumus gradien
+    for (int i=0;i<15;i++){
+        Mab[i]=(ay[1]-ay[0])/(ax[i]+0.1-ax[i]);
+    }
+    Mcd=(dy-cy)/(dx-cx);
+
+    for (int i=0;i<15;i++){
+        Cab[i]=ay[0]-(ax[i]*Mab[i]);
+    }
+    Ccd=cy-(cx*Mcd);
+
+    for (int i=0;i<15;i++){
+        px[i]=(Ccd-Cab[i])/(Mab[i]-Mcd);
+        py[i]=(Mab[i]*px[i])+Cab[i];
+    }
+    glBegin(GL_LINES);
+    glColor3ub(255,255,255);
+    for (int i=0;i<15;i++){
+        glVertex3f(px[i],py[i],120);
+        glVertex3f(ax[i],ay[0],120);
+    }
+    glVertex3f(px[7],py[7],120);
+    glVertex3f(-20,90,120);
+
+    glVertex3f(px[0],py[0],120);
+    glVertex3f(-20,100,120);
+    glEnd();
+
+    //part2
+    float ax1[15];
+    float ay1[2] = {20,-20};
+    float Mab1[15],Cab1[15],px1[15],py1[15];
+    float cx1=70, cy1=-20, dx1=170, dy1=20,Mcd1,Ccd1;
+
+        for (int i=0;i<11;i++){
+            ax1[i] = 70+(i*10);
+        }
+    //rumus gradien
+    for (int i=0;i<11;i++){
+        Mab1[i]=(ay1[1]-ay1[0])/(ax1[i]+0.1-ax1[i]);
+    }
+    Mcd1=(dy1-cy1)/(dx1-cx1);
+
+    for (int i=0;i<11;i++){
+        Cab1[i]=ay1[0]-(ax1[i]*Mab1[i]);
+    }
+    Ccd1=cy1-(cx1*Mcd1);
+
+    for (int i=0;i<11;i++){
+        px1[i]=(Ccd1-Cab1[i])/(Mab1[i]-Mcd1);
+        py1[i]=(Mab1[i]*px1[i])+Cab1[i];
+    }
+    glBegin(GL_LINES);
+    glColor3ub(255,255,255);
+    for (int i=0;i<11;i++){
+        glVertex3f(px1[i],py1[i],120);
+        glVertex3f(ax1[i],ay1[0],120);
+    }
+    glVertex3f(px1[0],py1[0],120);
+    glVertex3f(170,20,120);
+    glVertex3f(px1[3]-5,py1[3]-2,120);
+    glVertex3f(70,-10,120);
+    glVertex3f(px1[5],py1[5],120);
+    glVertex3f(70,0,120);
+    glVertex3f(px1[7]+4,py1[7]+2,120);
+    glVertex3f(70,10,120);
+    glEnd();
+
+    //segitiga
+     glBegin(GL_TRIANGLES);
+    glColor3ub(255,255,255);
+        for (int i=7;i>=0;i--){
+            glVertex3f(80+(i*10),20,120);
+            glVertex3f(80+(i*10),10,120);
+            glVertex3f(70+(i*10),10,120);
+        }
+        for (int i=4;i>=0;i--){
+            glVertex3f(80+(i*10),10,120);
+            glVertex3f(80+(i*10),0,120);
+            glVertex3f(70+(i*10),0,120);
+        }
+        for (int i=2;i>=0;i--){
+            glVertex3f(80+(i*10),0,120);
+            glVertex3f(80+(i*10),-10,120);
+            glVertex3f(70+(i*10),-10,120);
+        }
+        for (int i=6;i<15;i++){
+            glVertex3f(-160+(i*10),90,120);
+            glVertex3f(-160+(i*10),80,120);
+            glVertex3f(-170+(i*10),80,120);
+        }
+
+    glEnd();
+
+}
+void dinding_kanan()
+{
 
     //kanan
     glBegin(GL_LINES);
@@ -77,6 +228,7 @@ void dinding ()
         glVertex3f(-170,-20+(i*10),-120);
     }
     glEnd();
+    //segitiga
     glBegin(GL_TRIANGLES);
     glColor3ub(255,255,255);
     for (int h=0;h<10;h++){
@@ -87,6 +239,11 @@ void dinding ()
         }
     }
     glEnd();
+}
+void dinding ()
+{
+    dinding_depan();
+    dinding_kanan();
 
     //belakang kanan
     glBegin(GL_POLYGON);
@@ -387,19 +544,7 @@ void tanah()
     glVertex3f(260,-60,-230);
     glEnd();
 
-    glBegin(GL_LINES);
-    glColor3ub(0,0,255);
-    //horizontal
-    for (int i=3;i<45;i++){
-        glVertex3f(-200+(i*10),100,120);
-        glVertex3f(-200+(i*10),100,-170);
-    }
-    //vertical
-    for (int i=6;i<36;i++){
-        glVertex3f(-170,100,-230+(i*10));
-        glVertex3f(240,100,-230+(i*10));
-    }
-    glEnd();
+
 }
 void bangunan_bawah (void)
 {
