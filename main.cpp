@@ -106,7 +106,7 @@ void dinding ()
     glEnd();
 
 }
-void bangunan(void)
+void bangunan_atas (void)
 {
 //dalam bangunan ada 3 gedung utama
 //gedung kanan
@@ -144,6 +144,20 @@ void bangunan(void)
     glEnd();
 
 //gedung depan
+    //bawah
+    glBegin(GL_QUADS);
+    glColor3ub(100,105,105);
+    glVertex3f(150,-20,100);
+    glVertex3f(-150,-20,100);
+    glVertex3f(0,-20,0);
+    glVertex3f(150,-20,0);
+
+    glVertex3f(-150,-20,100);
+    glVertex3f(0,-20,0);
+    glVertex3f(0,-20,-100);
+    glVertex3f(-150,-20,-100);
+    glEnd();
+
     //atas
     glBegin(GL_QUADS);
     glColor3ub(255,255,255);
@@ -251,6 +265,29 @@ void bangunan(void)
     glVertex3f(188,100,-131);
     glVertex3f(239,100,-119);
     glEnd();
+    //bawah
+    glBegin(GL_QUADS);
+    glColor3ub(105,105,105);
+    glVertex3f(30,-20,-170);
+    glVertex3f(135,-20,-144);
+    glVertex3f(130,-20,-110);
+    glVertex3f(77,-20,-123);
+
+    glVertex3f(30,-20,-170);
+    glVertex3f(77,-20,-123);
+    glVertex3f(72,-20,-90);
+    glVertex3f(15,-20,-81);
+
+    glVertex3f(72,-20,-90);
+    glVertex3f(15,-20,-81);
+    glVertex3f(231,-20,-30);
+    glVertex3f(180,-20,-65);
+
+    glVertex3f(231,-20,-30);
+    glVertex3f(180,-20,-65);
+    glVertex3f(188,-20,-131);
+    glVertex3f(239,-20,-119);
+    glEnd();
     //belakang
     glBegin(GL_QUADS);
     glColor3ub(255,255,255);
@@ -300,7 +337,42 @@ void bangunan(void)
 
     glEnd();
 }
+void tanah()
+{
+    glBegin(GL_QUADS);
+    glColor3ub(212,175,55);
+    glVertex3f(-200,-60,-230);
+    glVertex3f(-200,-60,200);
+    glVertex3f(260,-60,200);
+    glVertex3f(260,-60,-230);
+    glEnd();
+}
+void bangunan_bawah (void)
+{
+    glBegin(GL_QUADS);
+    glColor3ub(180,180,180);
+    glVertex3f(-150,-20,-100);
+    glVertex3f(-150,-60,-100);
+    glVertex3f(-90,-60,-100);
+    glVertex3f(-90,-20,-100);
 
+    glVertex3f(-150,-20,30);
+    glVertex3f(-150,-60,30);
+    glVertex3f(-90,-60,30);
+    glVertex3f(-90,-20,30);
+
+    glColor3ub(180,180,180);
+    glVertex3f(-150,-20,-100);
+    glVertex3f(-150,-60,-100);
+    glVertex3f(-150,-60,30);
+    glVertex3f(-150,-20,30);
+
+    glVertex3f(-90,-20,-100);
+    glVertex3f(-90,-60,-100);
+    glVertex3f(-90,-60,30);
+    glVertex3f(-90,-20,30);
+    glEnd();
+}
 void tampil (void)
 {
     if(is_depth)
@@ -315,7 +387,9 @@ void tampil (void)
 	glTranslatef(xmovement, ymovement, zmovement); // Translate / Movement
 
 	dinding();
-    bangunan();
+	tanah();
+    bangunan_atas();
+    bangunan_bawah();
 
     glPushMatrix();
     glPopMatrix();
