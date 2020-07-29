@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1595929447 source:c:\users\acer\documents\semester 6\grafkom\tr asdos\tr\main.cpp
+1595966347 source:c:\users\acer\documents\semester 6\grafkom\tr asdos\tr\main.cpp
 	<windows.h>
 	<GL/glut.h>
+	<stdio.h>
 
 976692172 c:\program files (x86)\codeblocks\mingw\include\gl\glut.h
 	<windows.h>
@@ -221,4 +222,14 @@
 1595930217 source:e:\fani bakcup\fti-ti-2018\semester 6\grafika komputer - j\code\tr\main.cpp
 	<windows.h>
 	<GL/glut.h>
+
+1341006776 c:\program files (x86)\codeblocks\mingw\include\stdio.h
+	<_mingw.h>
+	<stddef.h>
+	<stdarg.h>
+	<sys/types.h>
+
+1341006780 c:\program files (x86)\codeblocks\mingw\include\sys\types.h
+	<_mingw.h>
+	<stddef.h>
 
