@@ -920,7 +920,6 @@ void ruangmeet()
     kursi_hadap(-100);
 
 }
-<<<<<<< HEAD
 void lobby()
 {
     glBegin(GL_QUADS);
@@ -952,8 +951,6 @@ void lobby()
     glVertex3f(113,-60,60);
     glEnd();
 }
-=======
->>>>>>> 6deab2c6e3172293ce871f3bbdcb391920647b86
 void bangunan_bawah (void)
 {
     lobby();
@@ -1002,15 +999,6 @@ void bangunan_bawah (void)
     glVertex3f(0,-60,-100);
     glVertex3f(0,-20,-100);
 
-<<<<<<< HEAD
-=======
-    glColor3ub(100,100,100);
-    glVertex3f(-40,-40,-80);
-    glVertex3f(-40,-60,-80);
-    glVertex3f(0,-60,-80);
-    glVertex3f(0,-40,-80);
-
->>>>>>> 6deab2c6e3172293ce871f3bbdcb391920647b86
     glVertex3f(-40,-20,-80);
     glVertex3f(-40,-60,-80);
     glVertex3f(-40,-60,0);
@@ -1023,7 +1011,6 @@ void bangunan_bawah (void)
 
     glEnd();
     //tangga
-<<<<<<< HEAD
     glBegin(GL_QUADS);
     for (int i=0;i<8;i++){
         glColor3ub(221,225,202);
@@ -1039,8 +1026,6 @@ void bangunan_bawah (void)
         glVertex3f(0,-55+(i*5),-70+(i*10));
     }
     glEnd();
-=======
->>>>>>> 6deab2c6e3172293ce871f3bbdcb391920647b86
 
     //kotak merah depan
     glBegin(GL_QUADS);
@@ -1164,7 +1149,6 @@ void bangunan_bawah (void)
     glVertex3f(10,-60,100.1);
     glVertex3f(0,-60,100.1);
     glEnd();
-<<<<<<< HEAD
 
 //ruang kaca A
     glBegin(GL_QUADS);
@@ -1241,84 +1225,6 @@ void jendela(int x1,int x2,int y1,int y2)
     glVertex3f(x1-(deltax/3),y1,100.1);
     glVertex3f(x1-(deltax/3),y2,100.1);
 
-=======
-
-//ruang kaca A
-    glBegin(GL_QUADS);
-    glColor3ub(46,204,209);
-    glVertex3f(150,-20,70);
-    glVertex3f(150,-60,70);
-    glVertex3f(90,-60,70);
-    glVertex3f(90,-20,70);
-
-    glVertex3f(90,-20,0);
-    glVertex3f(90,-60,0);
-    glVertex3f(90,-60,70);
-    glVertex3f(90,-20,70);
-    glEnd();
-
-//ruang kaca B
-    glBegin(GL_QUADS);
-    //kanan
-    glColor3ub(46,204,209);
-    glVertex3f(-10,-20,30);
-    glVertex3f(-10,-60,30);
-    glVertex3f(-10,-60,100);
-    glVertex3f(-10,-20,100);
-    //kiri
-    glVertex3f(60,-20,30);
-    glVertex3f(60,-60,30);
-    glVertex3f(60,-60,100);
-    glVertex3f(60,-20,100);
-    //depan
-    glVertex3f(60,-20,100);
-    glVertex3f(60,-60,100);
-    glVertex3f(-10,-60,100);
-    glVertex3f(-10,-20,100);
-
-    glVertex3f(60,-20,30);
-    glVertex3f(60,-60,30);
-    glVertex3f(-10,-60,30);
-    glVertex3f(-10,-20,30);
-    glEnd();
-    //jendela
-    glBegin(GL_QUADS);
-    glColor3ub(46,204,209);
-    glVertex3f(150.1,-10,70);
-    glVertex3f(150.1,20,70);
-    glVertex3f(150.1,20,90);
-    glVertex3f(150.1,-10,90);
-    glEnd();
-}
-void jendela(int x1,int x2,int y1,int y2)
-{
-    glBegin(GL_QUADS);
-    glColor3ub(46,204,209);
-    glVertex3f(x1,y1,100.1);
-    glVertex3f(x1,y2,100.1);
-    glVertex3f(x2,y2,100.1);
-    glVertex3f(x2,y1,100.1);
-    glEnd();
-    //garis bingkai
-    glBegin(GL_LINE_LOOP);
-    glColor3ub(255,255,255);
-    glVertex3f(x1,y1,100.1);
-    glVertex3f(x1,y2,100.1);
-
-    glVertex3f(x1,y2,100.1);
-    glVertex3f(x2,y2,100.1);
-
-    glVertex3f(x2,y2,100.1);
-    glVertex3f(x2,y1,100.1);
-    glEnd();
-    float deltax = x1-x2;
-    //kusen jendela
-    glBegin(GL_LINES);
-    glColor3ub(255,255,255);
-    glVertex3f(x1-(deltax/3),y1,100.1);
-    glVertex3f(x1-(deltax/3),y2,100.1);
-
->>>>>>> 6deab2c6e3172293ce871f3bbdcb391920647b86
     glVertex3f(x1-(2*(deltax/3)),y1,100.1);
     glVertex3f(x1-(2*(deltax/3)),y2,100.1);
 
@@ -1353,7 +1259,6 @@ void himpunan_tiang()
     ngon(100,-168,118,2,180,80);
 
 }
-<<<<<<< HEAD
 void almari()
 {
     for (int i=0;i<2;i++){
@@ -1383,9 +1288,6 @@ void almari()
         glEnd();
     }
 }
-=======
-
->>>>>>> 6deab2c6e3172293ce871f3bbdcb391920647b86
 void ngon(int n, float cx, float cz, float radius, float rotAngle,int t)
 {
     double angle,angleInc;
@@ -1419,7 +1321,6 @@ void himpunan_jendela()
     jendela(-60,-100,20,-10);
     jendela(-110,-140,20,-10);
 }
-
 void tampil (void)
 {
     if(is_depth)
@@ -1440,10 +1341,7 @@ void tampil (void)
     himpunan_tiang();
     himpunan_jendela();
     ruangmeet();
-<<<<<<< HEAD
     almari();
-=======
->>>>>>> 6deab2c6e3172293ce871f3bbdcb391920647b86
 
     glPushMatrix();
     glPopMatrix();
@@ -1524,3 +1422,4 @@ void ukuran (int lebar, int tinggi)
 	glMatrixMode(GL_MODELVIEW);
 	glViewport(0, 0, 1300, 700);
 }
+
