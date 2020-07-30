@@ -220,9 +220,10 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1595784314 source:e:\fani bakcup\fti-ti-2018\semester 6\grafika komputer - j\code\tr\main.cpp
+1596050618 source:e:\fani bakcup\fti-ti-2018\semester 6\grafika komputer - j\code\tr\main.cpp
 	<windows.h>
 	<GL/glut.h>
+	<stdio.h>
 
 1341006776 c:\program files (x86)\codeblocks\mingw\include\stdio.h
 	<_mingw.h>
